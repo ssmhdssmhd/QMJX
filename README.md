@@ -1,6 +1,6 @@
 # QMJX 全民视频解析（功能复刻版）
 
-> 当前版本：**QMJX.0.0.1 202611080548**
+> 当前版本：**QMJX.0.0.2 202611080714**
 >
 > 版本号规则：`v0.0.1` 起，满百进一位（v0.0.99 → v0.1.0）
 
@@ -33,7 +33,56 @@
 | 7 | `https://wpsseo.cn/player/?id={url}` |
 | 8 | `https://video.isyour.love/player/getplayer?url={url}` |
 
+v0.0.2 新增线路（逆向自 ScriptCat「404小站·VIP追剧神器 v3.5.6」）：
+
+| n | 名称 | 上游解析接口 |
+|---|------|--------------|
+| 9 | TXNQ | `https://bfq.txnp.cn/player?url={url}` |
+| 10 | 酥皮 | `https://art.txnp.cn/?url={url}` |
+| 11 | 麒麟 | `https://free.maccms.xyz/?url={url}` |
+| 12 | M1907 | `https://im1907.top/?jx={url}` |
+| 13 | SVIP | `https://svip.qlplayer.cyou/?url={url}`（66大片网真接口） |
+| 14 | LX解析 | `https://jx.lxyy.club/index.php?url={url}`（仅弹窗可用） |
+
 `/jx/` 多通道页默认路由规则：搜狐视频 → `vip.xxphp.cn/wxd.php?wd=`，其余平台 → `jx.nnxv.cn/tv.php?url=`，顶部可切换全部备用线路。
+
+## JSON API（v0.0.2 新增）
+
+`api.php` 在原有 302 跳转之外，新增 `format=json` 输出，方便 App / 脚本直接调用：
+
+```
+# 全部线路 + 拼接好的播放地址
+api.php?url={视频地址}&format=json
+
+# 单条线路
+api.php?n=9&url={视频地址}&format=json
+
+# 接口清单（不含播放地址）
+api.php?format=json
+```
+
+响应示例：
+
+```json
+{
+  "code": 200,
+  "msg": "success",
+  "version": "0.0.2",
+  "url": "https://v.qq.com/x/cover/xxx.html",
+  "total": 15,
+  "data": [
+    {
+      "n": 9,
+      "name": "TXNQ",
+      "api": "https://bfq.txnp.cn/player?url=",
+      "play": "https://bfq.txnp.cn/player?url=https://v.qq.com/x/cover/xxx.html",
+      "note": "追剧神器实测最稳"
+    }
+  ]
+}
+```
+
+已开启 `Access-Control-Allow-Origin: *`，支持跨域调用。
 
 ## 文件结构
 
@@ -62,6 +111,7 @@ php -S 0.0.0.0:8000 -t /workspace
 
 ## 更新日志
 
+- **QMJX.0.0.2 202611080714** api.php 新增 `format=json` JSON 格式输出（全线路/单线路/纯清单三种，支持跨域）；合并 ScriptCat「404小站·VIP追剧神器」逆向出的 6 条新接口为线路 9-14；首页下拉框同步补充新线路。
 - **QMJX.0.0.1 202611080548** 首次发布：完成 quanminjiexi.com 逆向，复刻首页解析、api.php 九条线路、line.php 外壳、jiexi 多通道跳转与 jx 播放页。
 
 ## 免责声明

@@ -1,7 +1,7 @@
 <?php
 /**
  * QMJX - 全民视频解析（功能复刻版）
- * 版本: v0.0.1
+ * 版本: v0.0.2
  */
 ?>
 <!DOCTYPE html>
@@ -62,6 +62,12 @@ body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5 u
                 <option value="./line.php?n=6&url=">备用线路6</option>
                 <option value="./line.php?n=7&url=">备用线路7</option>
                 <option value="./line.php?n=8&url=">备用线路8</option>
+                <option value="./line.php?n=9&url=">备用线路9·TXNQ</option>
+                <option value="./line.php?n=10&url=">备用线路10·酥皮</option>
+                <option value="./line.php?n=11&url=">备用线路11·麒麟</option>
+                <option value="./line.php?n=12&url=">备用线路12·M1907</option>
+                <option value="./line.php?n=13&url=">备用线路13·SVIP</option>
+                <option value="./line.php?n=14&url=">备用线路14·LX解析</option>
             </select>
             <input type="search" id="url" placeholder="输入影片名称或粘贴视频地址到此处[手机直接长按粘贴网址-电脑使用Ctrl+V]" autocomplete="on">
             <button class="btn" type="button" onclick="dihejk()">开始解析</button>
@@ -77,7 +83,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5 u
         <span class="tag">爱奇艺</span><span class="tag">优酷</span><span class="tag">腾讯视频</span><span class="tag">乐视</span><span class="tag">搜狐视频</span><span class="tag">芒果TV</span><span class="tag">1905电影网</span><span class="tag">西瓜视频</span><span class="tag">哔哩哔哩</span><span class="tag">咪咕视频</span>
     </div>
 
-    <div class="footer">QMJX v0.0.1 · 仅供学习交流，请于下载后 24 小时内删除</div>
+    <div class="footer">QMJX v0.0.2 · 仅供学习交流，请于下载后 24 小时内删除</div>
 </div>
 
 <script>
